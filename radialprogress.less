@@ -1,0 +1,320 @@
+﻿/*
+    Author: André Luiz Rabêllo
+
+    Radial progress indicators
+
+    Built upon https://medium.com/@andsens/radial-progress-indicator-using-css-a917b80c43f9#.vti5trnmu
+*/
+
+// Master element
+.radial-progress {
+	@circle-size: 120px;
+	@circle-background: #d2d6de;
+	@circle-color: #3c8dbc;
+	@inset-size: 90px;
+	@inset-color: #fbfbfb;
+	@transition-length: 1s;
+	@shadow: 6px 6px 10px rgba(0,0,0,0.2);
+	@percentage-color: #3c8dbc;
+	@percentage-font-size: 24px;
+	@percentage-text-width: 60px;
+
+	width:  @circle-size;
+	height: @circle-size;
+
+	background-color: @circle-background;
+	border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+
+    // Slices (each one covers 180deg)
+    .slice {
+        clip: rect(0px, @circle-size, @circle-size, @circle-size/2);
+	    &,
+        .fill {
+		    width:    @circle-size;
+		    height:   @circle-size;
+		    position: absolute;
+		    border-radius: 50%;
+
+		    -webkit-backface-visibility: hidden;
+		    transition: -webkit-transform @transition-length;
+		    transition: -ms-transform @transition-length;
+		    transition: transform @transition-length;
+		    border-radius: 50%;
+	    }
+		.fill {
+			clip: rect(0px, @circle-size/2, @circle-size, 0px);
+			background-color: @circle-color;
+		}
+    }
+
+    // Display for %
+	.display {
+		width:       @inset-size;
+		height:      @inset-size;
+		position:    absolute;
+		margin-left: (@circle-size - @inset-size)/2;
+		margin-top:  (@circle-size - @inset-size)/2;
+
+		background-color: @inset-color;
+		border-radius: 50%;
+		.percentage {
+			height:      @percentage-font-size;
+			width:       @percentage-text-width;
+			overflow:    hidden;
+			color:       @percentage-color;
+			font-weight: 800;
+			font-size:   @percentage-font-size;
+
+			position: absolute;
+			top:      (@inset-size - @percentage-font-size) / 2;
+			left:     (@inset-size - @percentage-text-width) / 2;
+
+			line-height: 1;
+			.numbers {
+				margin-top:     -@percentage-font-size;
+				transition:     width @transition-length;
+				span {
+					display:        inline-block;
+                    float:          left;
+					text-align:     center;
+				    vertical-align: top;
+					width:          @percentage-text-width;
+				}
+			}
+		}
+	}
+
+    // Rotation for every percentage of progress
+	@i: 0;
+	@increment: 180deg / 100;
+    .rotate(@degrees) {
+        -webkit-transform: rotate(@degrees);
+			-ms-transform: rotate(@degrees);
+				transform: rotate(@degrees);
+    }
+	.loop (@i) when (@i =< 100) {
+		&[data-progress="@{i}"] {
+			.slice:nth-child(1),
+            .fill {
+                .rotate(@increment * @i);
+			}	
+			.fill.fix {
+                .rotate(@increment * @i * 2);
+			}
+			.display .percentage .numbers {
+				width: @i * @percentage-text-width + @percentage-text-width;
+			}
+            
+            // Sizes
+            &.lg {
+                .display .percentage .numbers {
+				    width: @i * @percentage-text-width-lg + @percentage-text-width-lg;
+			    }
+            }
+            &.sm {
+                .display .percentage .numbers {
+				    width: @i * @percentage-text-width-sm + @percentage-text-width-sm;
+			    }
+            }
+            &.xs {
+                .display .percentage .numbers {
+				    width: @i * @percentage-text-width-xs + @percentage-text-width-xs;
+			    }
+            }
+		}
+		.loop(@i + 1);
+	}
+	.loop(@i);
+
+    // Inset variant
+    &.inset {
+		box-shadow: @shadow inset;
+        .display {
+		    box-shadow: @shadow;
+        }
+    }
+
+    // Pie variant
+    &.pie {
+        .display {
+            background-color: transparent;
+            .percentage {
+                text-shadow: 1px 0 black,
+                            -1px 0 black,
+                             0 1px black,
+                            0 -1px black;
+                color: #FFFFFF;
+            }
+        }
+    }
+
+    // Sizes
+
+    // lg
+    @circle-size-lg: 240px;
+    @inset-size-lg: 180px;
+    @percentage-font-size-lg: 48px;
+    @percentage-text-width-lg: 120px;
+    @shadow-lg: 12px 12px 10px rgba(0,0,0,0.2);
+
+    // sm
+    @circle-size-sm: 60px;
+    @inset-size-sm: 50px;
+    @percentage-font-size-sm: 16px;
+    @percentage-text-width-sm: 40px;
+    @shadow-sm: 3px 3px 6px rgba(0,0,0,0.2);
+
+    // xs
+    @circle-size-xs: 30px;
+    @inset-size-xs: 24px;
+    @percentage-font-size-xs: 10px;
+    @percentage-text-width-xs: 24px;
+    @shadow-xs: 2px 2px 4px rgba(0,0,0,0.2);
+
+    &.lg {
+        height: @circle-size-lg;
+        width: @circle-size-lg;
+
+        &.inset {
+	        box-shadow: @shadow-lg inset;
+            .display {
+		        box-shadow: @shadow-lg;
+            }
+        }
+
+        .slice {
+            clip: rect(0px, @circle-size-lg, @circle-size-lg, @circle-size-lg/2);
+	        &,
+            .fill {
+		        width:    @circle-size-lg;
+		        height:   @circle-size-lg;
+	        }
+		    .fill {
+			    clip: rect(0px, @circle-size-lg/2, @circle-size-lg, 0px);
+		    }
+        }
+
+        .display {
+		    width:       @inset-size-lg;
+		    height:      @inset-size-lg;
+		    margin-left: (@circle-size-lg - @inset-size-lg)/2;
+		    margin-top:  (@circle-size-lg - @inset-size-lg)/2;
+
+		    .percentage {
+			    height:   @percentage-font-size-lg;
+			    width:    @percentage-text-width-lg;
+
+			    top:      (@inset-size-lg - @percentage-font-size-lg) / 2;
+			    left:     (@inset-size-lg - @percentage-text-width-lg) / 2;
+
+			    line-height: 1;
+			    .numbers {
+				    margin-top:     -@percentage-font-size-lg;
+				    font-size:      @percentage-font-size-lg;
+				    span {
+					    width:          @percentage-text-width-lg;
+				    }
+			    }
+		    }
+	    }
+    }
+
+    &.sm {
+        height: @circle-size-sm;
+        width: @circle-size-sm;
+
+        &.inset {
+	        box-shadow: @shadow-sm inset;
+            .display {
+		        box-shadow: @shadow-sm;
+            }
+        }
+
+        .slice {
+            clip: rect(0px, @circle-size-sm, @circle-size-sm, @circle-size-sm/2);
+	        &,
+            .fill {
+		        width:    @circle-size-sm;
+		        height:   @circle-size-sm;
+	        }
+		    .fill {
+			    clip: rect(0px, @circle-size-sm/2, @circle-size-sm, 0px);
+		    }
+        }
+
+        .display {
+		    width:       @inset-size-sm;
+		    height:      @inset-size-sm;
+		    margin-left: (@circle-size-sm - @inset-size-sm)/2;
+		    margin-top:  (@circle-size-sm - @inset-size-sm)/2;
+
+		    .percentage {
+			    height:   @percentage-font-size-sm;
+			    width:    @percentage-text-width-sm;
+
+			    top:      (@inset-size-sm - @percentage-font-size-sm) / 2;
+			    left:     (@inset-size-sm - @percentage-text-width-sm) / 2;
+
+			    line-height: 1;
+			    .numbers {
+				    margin-top:     -@percentage-font-size-sm;
+				    font-size:      @percentage-font-size-sm;
+				    span {
+					    width:          @percentage-text-width-sm;
+				    }
+			    }
+		    }
+	    }
+    }
+
+    &.xs {
+        height: @circle-size-xs;
+        width: @circle-size-xs;
+
+        &.inset {
+	        box-shadow: @shadow-xs inset;
+            .display {
+		        box-shadow: @shadow-xs;
+            }
+        }
+
+        .slice {
+            clip: rect(0px, @circle-size-xs, @circle-size-xs, @circle-size-xs/2);
+	        &,
+            .fill {
+		        width:    @circle-size-xs;
+		        height:   @circle-size-xs;
+	        }
+		    .fill {
+			    clip: rect(0px, @circle-size-xs/2, @circle-size-xs, 0px);
+		    }
+        }
+
+        .display {
+		    width:       @inset-size-xs;
+		    height:      @inset-size-xs;
+		    margin-left: (@circle-size-xs - @inset-size-xs)/2;
+		    margin-top:  (@circle-size-xs - @inset-size-xs)/2;
+
+		    .percentage {
+			    height:   @percentage-font-size-xs;
+			    width:    @percentage-text-width-xs;
+
+			    top:      (@inset-size-xs - @percentage-font-size-xs) / 2 - 1px;
+			    left:     (@inset-size-xs - @percentage-text-width-xs) / 2;
+
+			    line-height: 1;
+			    .numbers {
+				    margin-top:     -@percentage-font-size-xs;
+				    font-size:      @percentage-font-size-xs;
+                    font-weight:    900;
+				    span {
+					    width:          @percentage-text-width-xs;
+				    }
+			    }
+		    }
+	    }
+    }
+}

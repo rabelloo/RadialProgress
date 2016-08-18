@@ -1,0 +1,2525 @@
+﻿/*
+    Author: André Luiz Rabêllo
+
+    Radial progress indicators
+
+    Built upon https://medium.com/@andsens/radial-progress-indicator-using-css-a917b80c43f9#.vti5trnmu
+*/
+.radial-progress {
+  width: 120px;
+  height: 120px;
+  background-color: #d2d6de;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.radial-progress .slice {
+  clip: rect(0px, 120px, 120px, 60px);
+}
+.radial-progress .slice,
+.radial-progress .slice .fill {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  transition: -webkit-transform 1s;
+  transition: -ms-transform 1s;
+  transition: transform 1s;
+  border-radius: 50%;
+}
+.radial-progress .slice .fill {
+  clip: rect(0px, 60px, 120px, 0px);
+  background-color: #3c8dbc;
+}
+.radial-progress .display {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 15px;
+  background-color: #fbfbfb;
+  border-radius: 50%;
+}
+.radial-progress .display .percentage {
+  height: 24px;
+  width: 60px;
+  overflow: hidden;
+  color: #3c8dbc;
+  font-weight: 800;
+  font-size: 24px;
+  position: absolute;
+  top: 33px;
+  left: 15px;
+  line-height: 1;
+}
+.radial-progress .display .percentage .numbers {
+  margin-top: -24px;
+  transition: width 1s;
+}
+.radial-progress .display .percentage .numbers span {
+  display: inline-block;
+  float: left;
+  text-align: center;
+  vertical-align: top;
+  width: 60px;
+}
+.radial-progress[data-progress="0"] .slice:nth-child(1),
+.radial-progress[data-progress="0"] .fill {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.radial-progress[data-progress="0"] .fill.fix {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.radial-progress[data-progress="0"] .display .percentage .numbers {
+  width: 60px;
+}
+.radial-progress[data-progress="0"].lg .display .percentage .numbers {
+  width: 120px;
+}
+.radial-progress[data-progress="0"].sm .display .percentage .numbers {
+  width: 40px;
+}
+.radial-progress[data-progress="0"].xs .display .percentage .numbers {
+  width: 24px;
+}
+.radial-progress[data-progress="1"] .slice:nth-child(1),
+.radial-progress[data-progress="1"] .fill {
+  -webkit-transform: rotate(1.8deg);
+  -ms-transform: rotate(1.8deg);
+  transform: rotate(1.8deg);
+}
+.radial-progress[data-progress="1"] .fill.fix {
+  -webkit-transform: rotate(3.6deg);
+  -ms-transform: rotate(3.6deg);
+  transform: rotate(3.6deg);
+}
+.radial-progress[data-progress="1"] .display .percentage .numbers {
+  width: 120px;
+}
+.radial-progress[data-progress="1"].lg .display .percentage .numbers {
+  width: 240px;
+}
+.radial-progress[data-progress="1"].sm .display .percentage .numbers {
+  width: 80px;
+}
+.radial-progress[data-progress="1"].xs .display .percentage .numbers {
+  width: 48px;
+}
+.radial-progress[data-progress="2"] .slice:nth-child(1),
+.radial-progress[data-progress="2"] .fill {
+  -webkit-transform: rotate(3.6deg);
+  -ms-transform: rotate(3.6deg);
+  transform: rotate(3.6deg);
+}
+.radial-progress[data-progress="2"] .fill.fix {
+  -webkit-transform: rotate(7.2deg);
+  -ms-transform: rotate(7.2deg);
+  transform: rotate(7.2deg);
+}
+.radial-progress[data-progress="2"] .display .percentage .numbers {
+  width: 180px;
+}
+.radial-progress[data-progress="2"].lg .display .percentage .numbers {
+  width: 360px;
+}
+.radial-progress[data-progress="2"].sm .display .percentage .numbers {
+  width: 120px;
+}
+.radial-progress[data-progress="2"].xs .display .percentage .numbers {
+  width: 72px;
+}
+.radial-progress[data-progress="3"] .slice:nth-child(1),
+.radial-progress[data-progress="3"] .fill {
+  -webkit-transform: rotate(5.4deg);
+  -ms-transform: rotate(5.4deg);
+  transform: rotate(5.4deg);
+}
+.radial-progress[data-progress="3"] .fill.fix {
+  -webkit-transform: rotate(10.8deg);
+  -ms-transform: rotate(10.8deg);
+  transform: rotate(10.8deg);
+}
+.radial-progress[data-progress="3"] .display .percentage .numbers {
+  width: 240px;
+}
+.radial-progress[data-progress="3"].lg .display .percentage .numbers {
+  width: 480px;
+}
+.radial-progress[data-progress="3"].sm .display .percentage .numbers {
+  width: 160px;
+}
+.radial-progress[data-progress="3"].xs .display .percentage .numbers {
+  width: 96px;
+}
+.radial-progress[data-progress="4"] .slice:nth-child(1),
+.radial-progress[data-progress="4"] .fill {
+  -webkit-transform: rotate(7.2deg);
+  -ms-transform: rotate(7.2deg);
+  transform: rotate(7.2deg);
+}
+.radial-progress[data-progress="4"] .fill.fix {
+  -webkit-transform: rotate(14.4deg);
+  -ms-transform: rotate(14.4deg);
+  transform: rotate(14.4deg);
+}
+.radial-progress[data-progress="4"] .display .percentage .numbers {
+  width: 300px;
+}
+.radial-progress[data-progress="4"].lg .display .percentage .numbers {
+  width: 600px;
+}
+.radial-progress[data-progress="4"].sm .display .percentage .numbers {
+  width: 200px;
+}
+.radial-progress[data-progress="4"].xs .display .percentage .numbers {
+  width: 120px;
+}
+.radial-progress[data-progress="5"] .slice:nth-child(1),
+.radial-progress[data-progress="5"] .fill {
+  -webkit-transform: rotate(9deg);
+  -ms-transform: rotate(9deg);
+  transform: rotate(9deg);
+}
+.radial-progress[data-progress="5"] .fill.fix {
+  -webkit-transform: rotate(18deg);
+  -ms-transform: rotate(18deg);
+  transform: rotate(18deg);
+}
+.radial-progress[data-progress="5"] .display .percentage .numbers {
+  width: 360px;
+}
+.radial-progress[data-progress="5"].lg .display .percentage .numbers {
+  width: 720px;
+}
+.radial-progress[data-progress="5"].sm .display .percentage .numbers {
+  width: 240px;
+}
+.radial-progress[data-progress="5"].xs .display .percentage .numbers {
+  width: 144px;
+}
+.radial-progress[data-progress="6"] .slice:nth-child(1),
+.radial-progress[data-progress="6"] .fill {
+  -webkit-transform: rotate(10.8deg);
+  -ms-transform: rotate(10.8deg);
+  transform: rotate(10.8deg);
+}
+.radial-progress[data-progress="6"] .fill.fix {
+  -webkit-transform: rotate(21.6deg);
+  -ms-transform: rotate(21.6deg);
+  transform: rotate(21.6deg);
+}
+.radial-progress[data-progress="6"] .display .percentage .numbers {
+  width: 420px;
+}
+.radial-progress[data-progress="6"].lg .display .percentage .numbers {
+  width: 840px;
+}
+.radial-progress[data-progress="6"].sm .display .percentage .numbers {
+  width: 280px;
+}
+.radial-progress[data-progress="6"].xs .display .percentage .numbers {
+  width: 168px;
+}
+.radial-progress[data-progress="7"] .slice:nth-child(1),
+.radial-progress[data-progress="7"] .fill {
+  -webkit-transform: rotate(12.6deg);
+  -ms-transform: rotate(12.6deg);
+  transform: rotate(12.6deg);
+}
+.radial-progress[data-progress="7"] .fill.fix {
+  -webkit-transform: rotate(25.2deg);
+  -ms-transform: rotate(25.2deg);
+  transform: rotate(25.2deg);
+}
+.radial-progress[data-progress="7"] .display .percentage .numbers {
+  width: 480px;
+}
+.radial-progress[data-progress="7"].lg .display .percentage .numbers {
+  width: 960px;
+}
+.radial-progress[data-progress="7"].sm .display .percentage .numbers {
+  width: 320px;
+}
+.radial-progress[data-progress="7"].xs .display .percentage .numbers {
+  width: 192px;
+}
+.radial-progress[data-progress="8"] .slice:nth-child(1),
+.radial-progress[data-progress="8"] .fill {
+  -webkit-transform: rotate(14.4deg);
+  -ms-transform: rotate(14.4deg);
+  transform: rotate(14.4deg);
+}
+.radial-progress[data-progress="8"] .fill.fix {
+  -webkit-transform: rotate(28.8deg);
+  -ms-transform: rotate(28.8deg);
+  transform: rotate(28.8deg);
+}
+.radial-progress[data-progress="8"] .display .percentage .numbers {
+  width: 540px;
+}
+.radial-progress[data-progress="8"].lg .display .percentage .numbers {
+  width: 1080px;
+}
+.radial-progress[data-progress="8"].sm .display .percentage .numbers {
+  width: 360px;
+}
+.radial-progress[data-progress="8"].xs .display .percentage .numbers {
+  width: 216px;
+}
+.radial-progress[data-progress="9"] .slice:nth-child(1),
+.radial-progress[data-progress="9"] .fill {
+  -webkit-transform: rotate(16.2deg);
+  -ms-transform: rotate(16.2deg);
+  transform: rotate(16.2deg);
+}
+.radial-progress[data-progress="9"] .fill.fix {
+  -webkit-transform: rotate(32.4deg);
+  -ms-transform: rotate(32.4deg);
+  transform: rotate(32.4deg);
+}
+.radial-progress[data-progress="9"] .display .percentage .numbers {
+  width: 600px;
+}
+.radial-progress[data-progress="9"].lg .display .percentage .numbers {
+  width: 1200px;
+}
+.radial-progress[data-progress="9"].sm .display .percentage .numbers {
+  width: 400px;
+}
+.radial-progress[data-progress="9"].xs .display .percentage .numbers {
+  width: 240px;
+}
+.radial-progress[data-progress="10"] .slice:nth-child(1),
+.radial-progress[data-progress="10"] .fill {
+  -webkit-transform: rotate(18deg);
+  -ms-transform: rotate(18deg);
+  transform: rotate(18deg);
+}
+.radial-progress[data-progress="10"] .fill.fix {
+  -webkit-transform: rotate(36deg);
+  -ms-transform: rotate(36deg);
+  transform: rotate(36deg);
+}
+.radial-progress[data-progress="10"] .display .percentage .numbers {
+  width: 660px;
+}
+.radial-progress[data-progress="10"].lg .display .percentage .numbers {
+  width: 1320px;
+}
+.radial-progress[data-progress="10"].sm .display .percentage .numbers {
+  width: 440px;
+}
+.radial-progress[data-progress="10"].xs .display .percentage .numbers {
+  width: 264px;
+}
+.radial-progress[data-progress="11"] .slice:nth-child(1),
+.radial-progress[data-progress="11"] .fill {
+  -webkit-transform: rotate(19.8deg);
+  -ms-transform: rotate(19.8deg);
+  transform: rotate(19.8deg);
+}
+.radial-progress[data-progress="11"] .fill.fix {
+  -webkit-transform: rotate(39.6deg);
+  -ms-transform: rotate(39.6deg);
+  transform: rotate(39.6deg);
+}
+.radial-progress[data-progress="11"] .display .percentage .numbers {
+  width: 720px;
+}
+.radial-progress[data-progress="11"].lg .display .percentage .numbers {
+  width: 1440px;
+}
+.radial-progress[data-progress="11"].sm .display .percentage .numbers {
+  width: 480px;
+}
+.radial-progress[data-progress="11"].xs .display .percentage .numbers {
+  width: 288px;
+}
+.radial-progress[data-progress="12"] .slice:nth-child(1),
+.radial-progress[data-progress="12"] .fill {
+  -webkit-transform: rotate(21.6deg);
+  -ms-transform: rotate(21.6deg);
+  transform: rotate(21.6deg);
+}
+.radial-progress[data-progress="12"] .fill.fix {
+  -webkit-transform: rotate(43.2deg);
+  -ms-transform: rotate(43.2deg);
+  transform: rotate(43.2deg);
+}
+.radial-progress[data-progress="12"] .display .percentage .numbers {
+  width: 780px;
+}
+.radial-progress[data-progress="12"].lg .display .percentage .numbers {
+  width: 1560px;
+}
+.radial-progress[data-progress="12"].sm .display .percentage .numbers {
+  width: 520px;
+}
+.radial-progress[data-progress="12"].xs .display .percentage .numbers {
+  width: 312px;
+}
+.radial-progress[data-progress="13"] .slice:nth-child(1),
+.radial-progress[data-progress="13"] .fill {
+  -webkit-transform: rotate(23.4deg);
+  -ms-transform: rotate(23.4deg);
+  transform: rotate(23.4deg);
+}
+.radial-progress[data-progress="13"] .fill.fix {
+  -webkit-transform: rotate(46.8deg);
+  -ms-transform: rotate(46.8deg);
+  transform: rotate(46.8deg);
+}
+.radial-progress[data-progress="13"] .display .percentage .numbers {
+  width: 840px;
+}
+.radial-progress[data-progress="13"].lg .display .percentage .numbers {
+  width: 1680px;
+}
+.radial-progress[data-progress="13"].sm .display .percentage .numbers {
+  width: 560px;
+}
+.radial-progress[data-progress="13"].xs .display .percentage .numbers {
+  width: 336px;
+}
+.radial-progress[data-progress="14"] .slice:nth-child(1),
+.radial-progress[data-progress="14"] .fill {
+  -webkit-transform: rotate(25.2deg);
+  -ms-transform: rotate(25.2deg);
+  transform: rotate(25.2deg);
+}
+.radial-progress[data-progress="14"] .fill.fix {
+  -webkit-transform: rotate(50.4deg);
+  -ms-transform: rotate(50.4deg);
+  transform: rotate(50.4deg);
+}
+.radial-progress[data-progress="14"] .display .percentage .numbers {
+  width: 900px;
+}
+.radial-progress[data-progress="14"].lg .display .percentage .numbers {
+  width: 1800px;
+}
+.radial-progress[data-progress="14"].sm .display .percentage .numbers {
+  width: 600px;
+}
+.radial-progress[data-progress="14"].xs .display .percentage .numbers {
+  width: 360px;
+}
+.radial-progress[data-progress="15"] .slice:nth-child(1),
+.radial-progress[data-progress="15"] .fill {
+  -webkit-transform: rotate(27deg);
+  -ms-transform: rotate(27deg);
+  transform: rotate(27deg);
+}
+.radial-progress[data-progress="15"] .fill.fix {
+  -webkit-transform: rotate(54deg);
+  -ms-transform: rotate(54deg);
+  transform: rotate(54deg);
+}
+.radial-progress[data-progress="15"] .display .percentage .numbers {
+  width: 960px;
+}
+.radial-progress[data-progress="15"].lg .display .percentage .numbers {
+  width: 1920px;
+}
+.radial-progress[data-progress="15"].sm .display .percentage .numbers {
+  width: 640px;
+}
+.radial-progress[data-progress="15"].xs .display .percentage .numbers {
+  width: 384px;
+}
+.radial-progress[data-progress="16"] .slice:nth-child(1),
+.radial-progress[data-progress="16"] .fill {
+  -webkit-transform: rotate(28.8deg);
+  -ms-transform: rotate(28.8deg);
+  transform: rotate(28.8deg);
+}
+.radial-progress[data-progress="16"] .fill.fix {
+  -webkit-transform: rotate(57.6deg);
+  -ms-transform: rotate(57.6deg);
+  transform: rotate(57.6deg);
+}
+.radial-progress[data-progress="16"] .display .percentage .numbers {
+  width: 1020px;
+}
+.radial-progress[data-progress="16"].lg .display .percentage .numbers {
+  width: 2040px;
+}
+.radial-progress[data-progress="16"].sm .display .percentage .numbers {
+  width: 680px;
+}
+.radial-progress[data-progress="16"].xs .display .percentage .numbers {
+  width: 408px;
+}
+.radial-progress[data-progress="17"] .slice:nth-child(1),
+.radial-progress[data-progress="17"] .fill {
+  -webkit-transform: rotate(30.6deg);
+  -ms-transform: rotate(30.6deg);
+  transform: rotate(30.6deg);
+}
+.radial-progress[data-progress="17"] .fill.fix {
+  -webkit-transform: rotate(61.2deg);
+  -ms-transform: rotate(61.2deg);
+  transform: rotate(61.2deg);
+}
+.radial-progress[data-progress="17"] .display .percentage .numbers {
+  width: 1080px;
+}
+.radial-progress[data-progress="17"].lg .display .percentage .numbers {
+  width: 2160px;
+}
+.radial-progress[data-progress="17"].sm .display .percentage .numbers {
+  width: 720px;
+}
+.radial-progress[data-progress="17"].xs .display .percentage .numbers {
+  width: 432px;
+}
+.radial-progress[data-progress="18"] .slice:nth-child(1),
+.radial-progress[data-progress="18"] .fill {
+  -webkit-transform: rotate(32.4deg);
+  -ms-transform: rotate(32.4deg);
+  transform: rotate(32.4deg);
+}
+.radial-progress[data-progress="18"] .fill.fix {
+  -webkit-transform: rotate(64.8deg);
+  -ms-transform: rotate(64.8deg);
+  transform: rotate(64.8deg);
+}
+.radial-progress[data-progress="18"] .display .percentage .numbers {
+  width: 1140px;
+}
+.radial-progress[data-progress="18"].lg .display .percentage .numbers {
+  width: 2280px;
+}
+.radial-progress[data-progress="18"].sm .display .percentage .numbers {
+  width: 760px;
+}
+.radial-progress[data-progress="18"].xs .display .percentage .numbers {
+  width: 456px;
+}
+.radial-progress[data-progress="19"] .slice:nth-child(1),
+.radial-progress[data-progress="19"] .fill {
+  -webkit-transform: rotate(34.2deg);
+  -ms-transform: rotate(34.2deg);
+  transform: rotate(34.2deg);
+}
+.radial-progress[data-progress="19"] .fill.fix {
+  -webkit-transform: rotate(68.4deg);
+  -ms-transform: rotate(68.4deg);
+  transform: rotate(68.4deg);
+}
+.radial-progress[data-progress="19"] .display .percentage .numbers {
+  width: 1200px;
+}
+.radial-progress[data-progress="19"].lg .display .percentage .numbers {
+  width: 2400px;
+}
+.radial-progress[data-progress="19"].sm .display .percentage .numbers {
+  width: 800px;
+}
+.radial-progress[data-progress="19"].xs .display .percentage .numbers {
+  width: 480px;
+}
+.radial-progress[data-progress="20"] .slice:nth-child(1),
+.radial-progress[data-progress="20"] .fill {
+  -webkit-transform: rotate(36deg);
+  -ms-transform: rotate(36deg);
+  transform: rotate(36deg);
+}
+.radial-progress[data-progress="20"] .fill.fix {
+  -webkit-transform: rotate(72deg);
+  -ms-transform: rotate(72deg);
+  transform: rotate(72deg);
+}
+.radial-progress[data-progress="20"] .display .percentage .numbers {
+  width: 1260px;
+}
+.radial-progress[data-progress="20"].lg .display .percentage .numbers {
+  width: 2520px;
+}
+.radial-progress[data-progress="20"].sm .display .percentage .numbers {
+  width: 840px;
+}
+.radial-progress[data-progress="20"].xs .display .percentage .numbers {
+  width: 504px;
+}
+.radial-progress[data-progress="21"] .slice:nth-child(1),
+.radial-progress[data-progress="21"] .fill {
+  -webkit-transform: rotate(37.8deg);
+  -ms-transform: rotate(37.8deg);
+  transform: rotate(37.8deg);
+}
+.radial-progress[data-progress="21"] .fill.fix {
+  -webkit-transform: rotate(75.6deg);
+  -ms-transform: rotate(75.6deg);
+  transform: rotate(75.6deg);
+}
+.radial-progress[data-progress="21"] .display .percentage .numbers {
+  width: 1320px;
+}
+.radial-progress[data-progress="21"].lg .display .percentage .numbers {
+  width: 2640px;
+}
+.radial-progress[data-progress="21"].sm .display .percentage .numbers {
+  width: 880px;
+}
+.radial-progress[data-progress="21"].xs .display .percentage .numbers {
+  width: 528px;
+}
+.radial-progress[data-progress="22"] .slice:nth-child(1),
+.radial-progress[data-progress="22"] .fill {
+  -webkit-transform: rotate(39.6deg);
+  -ms-transform: rotate(39.6deg);
+  transform: rotate(39.6deg);
+}
+.radial-progress[data-progress="22"] .fill.fix {
+  -webkit-transform: rotate(79.2deg);
+  -ms-transform: rotate(79.2deg);
+  transform: rotate(79.2deg);
+}
+.radial-progress[data-progress="22"] .display .percentage .numbers {
+  width: 1380px;
+}
+.radial-progress[data-progress="22"].lg .display .percentage .numbers {
+  width: 2760px;
+}
+.radial-progress[data-progress="22"].sm .display .percentage .numbers {
+  width: 920px;
+}
+.radial-progress[data-progress="22"].xs .display .percentage .numbers {
+  width: 552px;
+}
+.radial-progress[data-progress="23"] .slice:nth-child(1),
+.radial-progress[data-progress="23"] .fill {
+  -webkit-transform: rotate(41.4deg);
+  -ms-transform: rotate(41.4deg);
+  transform: rotate(41.4deg);
+}
+.radial-progress[data-progress="23"] .fill.fix {
+  -webkit-transform: rotate(82.8deg);
+  -ms-transform: rotate(82.8deg);
+  transform: rotate(82.8deg);
+}
+.radial-progress[data-progress="23"] .display .percentage .numbers {
+  width: 1440px;
+}
+.radial-progress[data-progress="23"].lg .display .percentage .numbers {
+  width: 2880px;
+}
+.radial-progress[data-progress="23"].sm .display .percentage .numbers {
+  width: 960px;
+}
+.radial-progress[data-progress="23"].xs .display .percentage .numbers {
+  width: 576px;
+}
+.radial-progress[data-progress="24"] .slice:nth-child(1),
+.radial-progress[data-progress="24"] .fill {
+  -webkit-transform: rotate(43.2deg);
+  -ms-transform: rotate(43.2deg);
+  transform: rotate(43.2deg);
+}
+.radial-progress[data-progress="24"] .fill.fix {
+  -webkit-transform: rotate(86.4deg);
+  -ms-transform: rotate(86.4deg);
+  transform: rotate(86.4deg);
+}
+.radial-progress[data-progress="24"] .display .percentage .numbers {
+  width: 1500px;
+}
+.radial-progress[data-progress="24"].lg .display .percentage .numbers {
+  width: 3000px;
+}
+.radial-progress[data-progress="24"].sm .display .percentage .numbers {
+  width: 1000px;
+}
+.radial-progress[data-progress="24"].xs .display .percentage .numbers {
+  width: 600px;
+}
+.radial-progress[data-progress="25"] .slice:nth-child(1),
+.radial-progress[data-progress="25"] .fill {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.radial-progress[data-progress="25"] .fill.fix {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.radial-progress[data-progress="25"] .display .percentage .numbers {
+  width: 1560px;
+}
+.radial-progress[data-progress="25"].lg .display .percentage .numbers {
+  width: 3120px;
+}
+.radial-progress[data-progress="25"].sm .display .percentage .numbers {
+  width: 1040px;
+}
+.radial-progress[data-progress="25"].xs .display .percentage .numbers {
+  width: 624px;
+}
+.radial-progress[data-progress="26"] .slice:nth-child(1),
+.radial-progress[data-progress="26"] .fill {
+  -webkit-transform: rotate(46.8deg);
+  -ms-transform: rotate(46.8deg);
+  transform: rotate(46.8deg);
+}
+.radial-progress[data-progress="26"] .fill.fix {
+  -webkit-transform: rotate(93.6deg);
+  -ms-transform: rotate(93.6deg);
+  transform: rotate(93.6deg);
+}
+.radial-progress[data-progress="26"] .display .percentage .numbers {
+  width: 1620px;
+}
+.radial-progress[data-progress="26"].lg .display .percentage .numbers {
+  width: 3240px;
+}
+.radial-progress[data-progress="26"].sm .display .percentage .numbers {
+  width: 1080px;
+}
+.radial-progress[data-progress="26"].xs .display .percentage .numbers {
+  width: 648px;
+}
+.radial-progress[data-progress="27"] .slice:nth-child(1),
+.radial-progress[data-progress="27"] .fill {
+  -webkit-transform: rotate(48.6deg);
+  -ms-transform: rotate(48.6deg);
+  transform: rotate(48.6deg);
+}
+.radial-progress[data-progress="27"] .fill.fix {
+  -webkit-transform: rotate(97.2deg);
+  -ms-transform: rotate(97.2deg);
+  transform: rotate(97.2deg);
+}
+.radial-progress[data-progress="27"] .display .percentage .numbers {
+  width: 1680px;
+}
+.radial-progress[data-progress="27"].lg .display .percentage .numbers {
+  width: 3360px;
+}
+.radial-progress[data-progress="27"].sm .display .percentage .numbers {
+  width: 1120px;
+}
+.radial-progress[data-progress="27"].xs .display .percentage .numbers {
+  width: 672px;
+}
+.radial-progress[data-progress="28"] .slice:nth-child(1),
+.radial-progress[data-progress="28"] .fill {
+  -webkit-transform: rotate(50.4deg);
+  -ms-transform: rotate(50.4deg);
+  transform: rotate(50.4deg);
+}
+.radial-progress[data-progress="28"] .fill.fix {
+  -webkit-transform: rotate(100.8deg);
+  -ms-transform: rotate(100.8deg);
+  transform: rotate(100.8deg);
+}
+.radial-progress[data-progress="28"] .display .percentage .numbers {
+  width: 1740px;
+}
+.radial-progress[data-progress="28"].lg .display .percentage .numbers {
+  width: 3480px;
+}
+.radial-progress[data-progress="28"].sm .display .percentage .numbers {
+  width: 1160px;
+}
+.radial-progress[data-progress="28"].xs .display .percentage .numbers {
+  width: 696px;
+}
+.radial-progress[data-progress="29"] .slice:nth-child(1),
+.radial-progress[data-progress="29"] .fill {
+  -webkit-transform: rotate(52.2deg);
+  -ms-transform: rotate(52.2deg);
+  transform: rotate(52.2deg);
+}
+.radial-progress[data-progress="29"] .fill.fix {
+  -webkit-transform: rotate(104.4deg);
+  -ms-transform: rotate(104.4deg);
+  transform: rotate(104.4deg);
+}
+.radial-progress[data-progress="29"] .display .percentage .numbers {
+  width: 1800px;
+}
+.radial-progress[data-progress="29"].lg .display .percentage .numbers {
+  width: 3600px;
+}
+.radial-progress[data-progress="29"].sm .display .percentage .numbers {
+  width: 1200px;
+}
+.radial-progress[data-progress="29"].xs .display .percentage .numbers {
+  width: 720px;
+}
+.radial-progress[data-progress="30"] .slice:nth-child(1),
+.radial-progress[data-progress="30"] .fill {
+  -webkit-transform: rotate(54deg);
+  -ms-transform: rotate(54deg);
+  transform: rotate(54deg);
+}
+.radial-progress[data-progress="30"] .fill.fix {
+  -webkit-transform: rotate(108deg);
+  -ms-transform: rotate(108deg);
+  transform: rotate(108deg);
+}
+.radial-progress[data-progress="30"] .display .percentage .numbers {
+  width: 1860px;
+}
+.radial-progress[data-progress="30"].lg .display .percentage .numbers {
+  width: 3720px;
+}
+.radial-progress[data-progress="30"].sm .display .percentage .numbers {
+  width: 1240px;
+}
+.radial-progress[data-progress="30"].xs .display .percentage .numbers {
+  width: 744px;
+}
+.radial-progress[data-progress="31"] .slice:nth-child(1),
+.radial-progress[data-progress="31"] .fill {
+  -webkit-transform: rotate(55.8deg);
+  -ms-transform: rotate(55.8deg);
+  transform: rotate(55.8deg);
+}
+.radial-progress[data-progress="31"] .fill.fix {
+  -webkit-transform: rotate(111.6deg);
+  -ms-transform: rotate(111.6deg);
+  transform: rotate(111.6deg);
+}
+.radial-progress[data-progress="31"] .display .percentage .numbers {
+  width: 1920px;
+}
+.radial-progress[data-progress="31"].lg .display .percentage .numbers {
+  width: 3840px;
+}
+.radial-progress[data-progress="31"].sm .display .percentage .numbers {
+  width: 1280px;
+}
+.radial-progress[data-progress="31"].xs .display .percentage .numbers {
+  width: 768px;
+}
+.radial-progress[data-progress="32"] .slice:nth-child(1),
+.radial-progress[data-progress="32"] .fill {
+  -webkit-transform: rotate(57.6deg);
+  -ms-transform: rotate(57.6deg);
+  transform: rotate(57.6deg);
+}
+.radial-progress[data-progress="32"] .fill.fix {
+  -webkit-transform: rotate(115.2deg);
+  -ms-transform: rotate(115.2deg);
+  transform: rotate(115.2deg);
+}
+.radial-progress[data-progress="32"] .display .percentage .numbers {
+  width: 1980px;
+}
+.radial-progress[data-progress="32"].lg .display .percentage .numbers {
+  width: 3960px;
+}
+.radial-progress[data-progress="32"].sm .display .percentage .numbers {
+  width: 1320px;
+}
+.radial-progress[data-progress="32"].xs .display .percentage .numbers {
+  width: 792px;
+}
+.radial-progress[data-progress="33"] .slice:nth-child(1),
+.radial-progress[data-progress="33"] .fill {
+  -webkit-transform: rotate(59.4deg);
+  -ms-transform: rotate(59.4deg);
+  transform: rotate(59.4deg);
+}
+.radial-progress[data-progress="33"] .fill.fix {
+  -webkit-transform: rotate(118.8deg);
+  -ms-transform: rotate(118.8deg);
+  transform: rotate(118.8deg);
+}
+.radial-progress[data-progress="33"] .display .percentage .numbers {
+  width: 2040px;
+}
+.radial-progress[data-progress="33"].lg .display .percentage .numbers {
+  width: 4080px;
+}
+.radial-progress[data-progress="33"].sm .display .percentage .numbers {
+  width: 1360px;
+}
+.radial-progress[data-progress="33"].xs .display .percentage .numbers {
+  width: 816px;
+}
+.radial-progress[data-progress="34"] .slice:nth-child(1),
+.radial-progress[data-progress="34"] .fill {
+  -webkit-transform: rotate(61.2deg);
+  -ms-transform: rotate(61.2deg);
+  transform: rotate(61.2deg);
+}
+.radial-progress[data-progress="34"] .fill.fix {
+  -webkit-transform: rotate(122.4deg);
+  -ms-transform: rotate(122.4deg);
+  transform: rotate(122.4deg);
+}
+.radial-progress[data-progress="34"] .display .percentage .numbers {
+  width: 2100px;
+}
+.radial-progress[data-progress="34"].lg .display .percentage .numbers {
+  width: 4200px;
+}
+.radial-progress[data-progress="34"].sm .display .percentage .numbers {
+  width: 1400px;
+}
+.radial-progress[data-progress="34"].xs .display .percentage .numbers {
+  width: 840px;
+}
+.radial-progress[data-progress="35"] .slice:nth-child(1),
+.radial-progress[data-progress="35"] .fill {
+  -webkit-transform: rotate(63deg);
+  -ms-transform: rotate(63deg);
+  transform: rotate(63deg);
+}
+.radial-progress[data-progress="35"] .fill.fix {
+  -webkit-transform: rotate(126deg);
+  -ms-transform: rotate(126deg);
+  transform: rotate(126deg);
+}
+.radial-progress[data-progress="35"] .display .percentage .numbers {
+  width: 2160px;
+}
+.radial-progress[data-progress="35"].lg .display .percentage .numbers {
+  width: 4320px;
+}
+.radial-progress[data-progress="35"].sm .display .percentage .numbers {
+  width: 1440px;
+}
+.radial-progress[data-progress="35"].xs .display .percentage .numbers {
+  width: 864px;
+}
+.radial-progress[data-progress="36"] .slice:nth-child(1),
+.radial-progress[data-progress="36"] .fill {
+  -webkit-transform: rotate(64.8deg);
+  -ms-transform: rotate(64.8deg);
+  transform: rotate(64.8deg);
+}
+.radial-progress[data-progress="36"] .fill.fix {
+  -webkit-transform: rotate(129.6deg);
+  -ms-transform: rotate(129.6deg);
+  transform: rotate(129.6deg);
+}
+.radial-progress[data-progress="36"] .display .percentage .numbers {
+  width: 2220px;
+}
+.radial-progress[data-progress="36"].lg .display .percentage .numbers {
+  width: 4440px;
+}
+.radial-progress[data-progress="36"].sm .display .percentage .numbers {
+  width: 1480px;
+}
+.radial-progress[data-progress="36"].xs .display .percentage .numbers {
+  width: 888px;
+}
+.radial-progress[data-progress="37"] .slice:nth-child(1),
+.radial-progress[data-progress="37"] .fill {
+  -webkit-transform: rotate(66.6deg);
+  -ms-transform: rotate(66.6deg);
+  transform: rotate(66.6deg);
+}
+.radial-progress[data-progress="37"] .fill.fix {
+  -webkit-transform: rotate(133.2deg);
+  -ms-transform: rotate(133.2deg);
+  transform: rotate(133.2deg);
+}
+.radial-progress[data-progress="37"] .display .percentage .numbers {
+  width: 2280px;
+}
+.radial-progress[data-progress="37"].lg .display .percentage .numbers {
+  width: 4560px;
+}
+.radial-progress[data-progress="37"].sm .display .percentage .numbers {
+  width: 1520px;
+}
+.radial-progress[data-progress="37"].xs .display .percentage .numbers {
+  width: 912px;
+}
+.radial-progress[data-progress="38"] .slice:nth-child(1),
+.radial-progress[data-progress="38"] .fill {
+  -webkit-transform: rotate(68.4deg);
+  -ms-transform: rotate(68.4deg);
+  transform: rotate(68.4deg);
+}
+.radial-progress[data-progress="38"] .fill.fix {
+  -webkit-transform: rotate(136.8deg);
+  -ms-transform: rotate(136.8deg);
+  transform: rotate(136.8deg);
+}
+.radial-progress[data-progress="38"] .display .percentage .numbers {
+  width: 2340px;
+}
+.radial-progress[data-progress="38"].lg .display .percentage .numbers {
+  width: 4680px;
+}
+.radial-progress[data-progress="38"].sm .display .percentage .numbers {
+  width: 1560px;
+}
+.radial-progress[data-progress="38"].xs .display .percentage .numbers {
+  width: 936px;
+}
+.radial-progress[data-progress="39"] .slice:nth-child(1),
+.radial-progress[data-progress="39"] .fill {
+  -webkit-transform: rotate(70.2deg);
+  -ms-transform: rotate(70.2deg);
+  transform: rotate(70.2deg);
+}
+.radial-progress[data-progress="39"] .fill.fix {
+  -webkit-transform: rotate(140.4deg);
+  -ms-transform: rotate(140.4deg);
+  transform: rotate(140.4deg);
+}
+.radial-progress[data-progress="39"] .display .percentage .numbers {
+  width: 2400px;
+}
+.radial-progress[data-progress="39"].lg .display .percentage .numbers {
+  width: 4800px;
+}
+.radial-progress[data-progress="39"].sm .display .percentage .numbers {
+  width: 1600px;
+}
+.radial-progress[data-progress="39"].xs .display .percentage .numbers {
+  width: 960px;
+}
+.radial-progress[data-progress="40"] .slice:nth-child(1),
+.radial-progress[data-progress="40"] .fill {
+  -webkit-transform: rotate(72deg);
+  -ms-transform: rotate(72deg);
+  transform: rotate(72deg);
+}
+.radial-progress[data-progress="40"] .fill.fix {
+  -webkit-transform: rotate(144deg);
+  -ms-transform: rotate(144deg);
+  transform: rotate(144deg);
+}
+.radial-progress[data-progress="40"] .display .percentage .numbers {
+  width: 2460px;
+}
+.radial-progress[data-progress="40"].lg .display .percentage .numbers {
+  width: 4920px;
+}
+.radial-progress[data-progress="40"].sm .display .percentage .numbers {
+  width: 1640px;
+}
+.radial-progress[data-progress="40"].xs .display .percentage .numbers {
+  width: 984px;
+}
+.radial-progress[data-progress="41"] .slice:nth-child(1),
+.radial-progress[data-progress="41"] .fill {
+  -webkit-transform: rotate(73.8deg);
+  -ms-transform: rotate(73.8deg);
+  transform: rotate(73.8deg);
+}
+.radial-progress[data-progress="41"] .fill.fix {
+  -webkit-transform: rotate(147.6deg);
+  -ms-transform: rotate(147.6deg);
+  transform: rotate(147.6deg);
+}
+.radial-progress[data-progress="41"] .display .percentage .numbers {
+  width: 2520px;
+}
+.radial-progress[data-progress="41"].lg .display .percentage .numbers {
+  width: 5040px;
+}
+.radial-progress[data-progress="41"].sm .display .percentage .numbers {
+  width: 1680px;
+}
+.radial-progress[data-progress="41"].xs .display .percentage .numbers {
+  width: 1008px;
+}
+.radial-progress[data-progress="42"] .slice:nth-child(1),
+.radial-progress[data-progress="42"] .fill {
+  -webkit-transform: rotate(75.6deg);
+  -ms-transform: rotate(75.6deg);
+  transform: rotate(75.6deg);
+}
+.radial-progress[data-progress="42"] .fill.fix {
+  -webkit-transform: rotate(151.2deg);
+  -ms-transform: rotate(151.2deg);
+  transform: rotate(151.2deg);
+}
+.radial-progress[data-progress="42"] .display .percentage .numbers {
+  width: 2580px;
+}
+.radial-progress[data-progress="42"].lg .display .percentage .numbers {
+  width: 5160px;
+}
+.radial-progress[data-progress="42"].sm .display .percentage .numbers {
+  width: 1720px;
+}
+.radial-progress[data-progress="42"].xs .display .percentage .numbers {
+  width: 1032px;
+}
+.radial-progress[data-progress="43"] .slice:nth-child(1),
+.radial-progress[data-progress="43"] .fill {
+  -webkit-transform: rotate(77.4deg);
+  -ms-transform: rotate(77.4deg);
+  transform: rotate(77.4deg);
+}
+.radial-progress[data-progress="43"] .fill.fix {
+  -webkit-transform: rotate(154.8deg);
+  -ms-transform: rotate(154.8deg);
+  transform: rotate(154.8deg);
+}
+.radial-progress[data-progress="43"] .display .percentage .numbers {
+  width: 2640px;
+}
+.radial-progress[data-progress="43"].lg .display .percentage .numbers {
+  width: 5280px;
+}
+.radial-progress[data-progress="43"].sm .display .percentage .numbers {
+  width: 1760px;
+}
+.radial-progress[data-progress="43"].xs .display .percentage .numbers {
+  width: 1056px;
+}
+.radial-progress[data-progress="44"] .slice:nth-child(1),
+.radial-progress[data-progress="44"] .fill {
+  -webkit-transform: rotate(79.2deg);
+  -ms-transform: rotate(79.2deg);
+  transform: rotate(79.2deg);
+}
+.radial-progress[data-progress="44"] .fill.fix {
+  -webkit-transform: rotate(158.4deg);
+  -ms-transform: rotate(158.4deg);
+  transform: rotate(158.4deg);
+}
+.radial-progress[data-progress="44"] .display .percentage .numbers {
+  width: 2700px;
+}
+.radial-progress[data-progress="44"].lg .display .percentage .numbers {
+  width: 5400px;
+}
+.radial-progress[data-progress="44"].sm .display .percentage .numbers {
+  width: 1800px;
+}
+.radial-progress[data-progress="44"].xs .display .percentage .numbers {
+  width: 1080px;
+}
+.radial-progress[data-progress="45"] .slice:nth-child(1),
+.radial-progress[data-progress="45"] .fill {
+  -webkit-transform: rotate(81deg);
+  -ms-transform: rotate(81deg);
+  transform: rotate(81deg);
+}
+.radial-progress[data-progress="45"] .fill.fix {
+  -webkit-transform: rotate(162deg);
+  -ms-transform: rotate(162deg);
+  transform: rotate(162deg);
+}
+.radial-progress[data-progress="45"] .display .percentage .numbers {
+  width: 2760px;
+}
+.radial-progress[data-progress="45"].lg .display .percentage .numbers {
+  width: 5520px;
+}
+.radial-progress[data-progress="45"].sm .display .percentage .numbers {
+  width: 1840px;
+}
+.radial-progress[data-progress="45"].xs .display .percentage .numbers {
+  width: 1104px;
+}
+.radial-progress[data-progress="46"] .slice:nth-child(1),
+.radial-progress[data-progress="46"] .fill {
+  -webkit-transform: rotate(82.8deg);
+  -ms-transform: rotate(82.8deg);
+  transform: rotate(82.8deg);
+}
+.radial-progress[data-progress="46"] .fill.fix {
+  -webkit-transform: rotate(165.6deg);
+  -ms-transform: rotate(165.6deg);
+  transform: rotate(165.6deg);
+}
+.radial-progress[data-progress="46"] .display .percentage .numbers {
+  width: 2820px;
+}
+.radial-progress[data-progress="46"].lg .display .percentage .numbers {
+  width: 5640px;
+}
+.radial-progress[data-progress="46"].sm .display .percentage .numbers {
+  width: 1880px;
+}
+.radial-progress[data-progress="46"].xs .display .percentage .numbers {
+  width: 1128px;
+}
+.radial-progress[data-progress="47"] .slice:nth-child(1),
+.radial-progress[data-progress="47"] .fill {
+  -webkit-transform: rotate(84.6deg);
+  -ms-transform: rotate(84.6deg);
+  transform: rotate(84.6deg);
+}
+.radial-progress[data-progress="47"] .fill.fix {
+  -webkit-transform: rotate(169.2deg);
+  -ms-transform: rotate(169.2deg);
+  transform: rotate(169.2deg);
+}
+.radial-progress[data-progress="47"] .display .percentage .numbers {
+  width: 2880px;
+}
+.radial-progress[data-progress="47"].lg .display .percentage .numbers {
+  width: 5760px;
+}
+.radial-progress[data-progress="47"].sm .display .percentage .numbers {
+  width: 1920px;
+}
+.radial-progress[data-progress="47"].xs .display .percentage .numbers {
+  width: 1152px;
+}
+.radial-progress[data-progress="48"] .slice:nth-child(1),
+.radial-progress[data-progress="48"] .fill {
+  -webkit-transform: rotate(86.4deg);
+  -ms-transform: rotate(86.4deg);
+  transform: rotate(86.4deg);
+}
+.radial-progress[data-progress="48"] .fill.fix {
+  -webkit-transform: rotate(172.8deg);
+  -ms-transform: rotate(172.8deg);
+  transform: rotate(172.8deg);
+}
+.radial-progress[data-progress="48"] .display .percentage .numbers {
+  width: 2940px;
+}
+.radial-progress[data-progress="48"].lg .display .percentage .numbers {
+  width: 5880px;
+}
+.radial-progress[data-progress="48"].sm .display .percentage .numbers {
+  width: 1960px;
+}
+.radial-progress[data-progress="48"].xs .display .percentage .numbers {
+  width: 1176px;
+}
+.radial-progress[data-progress="49"] .slice:nth-child(1),
+.radial-progress[data-progress="49"] .fill {
+  -webkit-transform: rotate(88.2deg);
+  -ms-transform: rotate(88.2deg);
+  transform: rotate(88.2deg);
+}
+.radial-progress[data-progress="49"] .fill.fix {
+  -webkit-transform: rotate(176.4deg);
+  -ms-transform: rotate(176.4deg);
+  transform: rotate(176.4deg);
+}
+.radial-progress[data-progress="49"] .display .percentage .numbers {
+  width: 3000px;
+}
+.radial-progress[data-progress="49"].lg .display .percentage .numbers {
+  width: 6000px;
+}
+.radial-progress[data-progress="49"].sm .display .percentage .numbers {
+  width: 2000px;
+}
+.radial-progress[data-progress="49"].xs .display .percentage .numbers {
+  width: 1200px;
+}
+.radial-progress[data-progress="50"] .slice:nth-child(1),
+.radial-progress[data-progress="50"] .fill {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.radial-progress[data-progress="50"] .fill.fix {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.radial-progress[data-progress="50"] .display .percentage .numbers {
+  width: 3060px;
+}
+.radial-progress[data-progress="50"].lg .display .percentage .numbers {
+  width: 6120px;
+}
+.radial-progress[data-progress="50"].sm .display .percentage .numbers {
+  width: 2040px;
+}
+.radial-progress[data-progress="50"].xs .display .percentage .numbers {
+  width: 1224px;
+}
+.radial-progress[data-progress="51"] .slice:nth-child(1),
+.radial-progress[data-progress="51"] .fill {
+  -webkit-transform: rotate(91.8deg);
+  -ms-transform: rotate(91.8deg);
+  transform: rotate(91.8deg);
+}
+.radial-progress[data-progress="51"] .fill.fix {
+  -webkit-transform: rotate(183.6deg);
+  -ms-transform: rotate(183.6deg);
+  transform: rotate(183.6deg);
+}
+.radial-progress[data-progress="51"] .display .percentage .numbers {
+  width: 3120px;
+}
+.radial-progress[data-progress="51"].lg .display .percentage .numbers {
+  width: 6240px;
+}
+.radial-progress[data-progress="51"].sm .display .percentage .numbers {
+  width: 2080px;
+}
+.radial-progress[data-progress="51"].xs .display .percentage .numbers {
+  width: 1248px;
+}
+.radial-progress[data-progress="52"] .slice:nth-child(1),
+.radial-progress[data-progress="52"] .fill {
+  -webkit-transform: rotate(93.6deg);
+  -ms-transform: rotate(93.6deg);
+  transform: rotate(93.6deg);
+}
+.radial-progress[data-progress="52"] .fill.fix {
+  -webkit-transform: rotate(187.2deg);
+  -ms-transform: rotate(187.2deg);
+  transform: rotate(187.2deg);
+}
+.radial-progress[data-progress="52"] .display .percentage .numbers {
+  width: 3180px;
+}
+.radial-progress[data-progress="52"].lg .display .percentage .numbers {
+  width: 6360px;
+}
+.radial-progress[data-progress="52"].sm .display .percentage .numbers {
+  width: 2120px;
+}
+.radial-progress[data-progress="52"].xs .display .percentage .numbers {
+  width: 1272px;
+}
+.radial-progress[data-progress="53"] .slice:nth-child(1),
+.radial-progress[data-progress="53"] .fill {
+  -webkit-transform: rotate(95.4deg);
+  -ms-transform: rotate(95.4deg);
+  transform: rotate(95.4deg);
+}
+.radial-progress[data-progress="53"] .fill.fix {
+  -webkit-transform: rotate(190.8deg);
+  -ms-transform: rotate(190.8deg);
+  transform: rotate(190.8deg);
+}
+.radial-progress[data-progress="53"] .display .percentage .numbers {
+  width: 3240px;
+}
+.radial-progress[data-progress="53"].lg .display .percentage .numbers {
+  width: 6480px;
+}
+.radial-progress[data-progress="53"].sm .display .percentage .numbers {
+  width: 2160px;
+}
+.radial-progress[data-progress="53"].xs .display .percentage .numbers {
+  width: 1296px;
+}
+.radial-progress[data-progress="54"] .slice:nth-child(1),
+.radial-progress[data-progress="54"] .fill {
+  -webkit-transform: rotate(97.2deg);
+  -ms-transform: rotate(97.2deg);
+  transform: rotate(97.2deg);
+}
+.radial-progress[data-progress="54"] .fill.fix {
+  -webkit-transform: rotate(194.4deg);
+  -ms-transform: rotate(194.4deg);
+  transform: rotate(194.4deg);
+}
+.radial-progress[data-progress="54"] .display .percentage .numbers {
+  width: 3300px;
+}
+.radial-progress[data-progress="54"].lg .display .percentage .numbers {
+  width: 6600px;
+}
+.radial-progress[data-progress="54"].sm .display .percentage .numbers {
+  width: 2200px;
+}
+.radial-progress[data-progress="54"].xs .display .percentage .numbers {
+  width: 1320px;
+}
+.radial-progress[data-progress="55"] .slice:nth-child(1),
+.radial-progress[data-progress="55"] .fill {
+  -webkit-transform: rotate(99deg);
+  -ms-transform: rotate(99deg);
+  transform: rotate(99deg);
+}
+.radial-progress[data-progress="55"] .fill.fix {
+  -webkit-transform: rotate(198deg);
+  -ms-transform: rotate(198deg);
+  transform: rotate(198deg);
+}
+.radial-progress[data-progress="55"] .display .percentage .numbers {
+  width: 3360px;
+}
+.radial-progress[data-progress="55"].lg .display .percentage .numbers {
+  width: 6720px;
+}
+.radial-progress[data-progress="55"].sm .display .percentage .numbers {
+  width: 2240px;
+}
+.radial-progress[data-progress="55"].xs .display .percentage .numbers {
+  width: 1344px;
+}
+.radial-progress[data-progress="56"] .slice:nth-child(1),
+.radial-progress[data-progress="56"] .fill {
+  -webkit-transform: rotate(100.8deg);
+  -ms-transform: rotate(100.8deg);
+  transform: rotate(100.8deg);
+}
+.radial-progress[data-progress="56"] .fill.fix {
+  -webkit-transform: rotate(201.6deg);
+  -ms-transform: rotate(201.6deg);
+  transform: rotate(201.6deg);
+}
+.radial-progress[data-progress="56"] .display .percentage .numbers {
+  width: 3420px;
+}
+.radial-progress[data-progress="56"].lg .display .percentage .numbers {
+  width: 6840px;
+}
+.radial-progress[data-progress="56"].sm .display .percentage .numbers {
+  width: 2280px;
+}
+.radial-progress[data-progress="56"].xs .display .percentage .numbers {
+  width: 1368px;
+}
+.radial-progress[data-progress="57"] .slice:nth-child(1),
+.radial-progress[data-progress="57"] .fill {
+  -webkit-transform: rotate(102.6deg);
+  -ms-transform: rotate(102.6deg);
+  transform: rotate(102.6deg);
+}
+.radial-progress[data-progress="57"] .fill.fix {
+  -webkit-transform: rotate(205.2deg);
+  -ms-transform: rotate(205.2deg);
+  transform: rotate(205.2deg);
+}
+.radial-progress[data-progress="57"] .display .percentage .numbers {
+  width: 3480px;
+}
+.radial-progress[data-progress="57"].lg .display .percentage .numbers {
+  width: 6960px;
+}
+.radial-progress[data-progress="57"].sm .display .percentage .numbers {
+  width: 2320px;
+}
+.radial-progress[data-progress="57"].xs .display .percentage .numbers {
+  width: 1392px;
+}
+.radial-progress[data-progress="58"] .slice:nth-child(1),
+.radial-progress[data-progress="58"] .fill {
+  -webkit-transform: rotate(104.4deg);
+  -ms-transform: rotate(104.4deg);
+  transform: rotate(104.4deg);
+}
+.radial-progress[data-progress="58"] .fill.fix {
+  -webkit-transform: rotate(208.8deg);
+  -ms-transform: rotate(208.8deg);
+  transform: rotate(208.8deg);
+}
+.radial-progress[data-progress="58"] .display .percentage .numbers {
+  width: 3540px;
+}
+.radial-progress[data-progress="58"].lg .display .percentage .numbers {
+  width: 7080px;
+}
+.radial-progress[data-progress="58"].sm .display .percentage .numbers {
+  width: 2360px;
+}
+.radial-progress[data-progress="58"].xs .display .percentage .numbers {
+  width: 1416px;
+}
+.radial-progress[data-progress="59"] .slice:nth-child(1),
+.radial-progress[data-progress="59"] .fill {
+  -webkit-transform: rotate(106.2deg);
+  -ms-transform: rotate(106.2deg);
+  transform: rotate(106.2deg);
+}
+.radial-progress[data-progress="59"] .fill.fix {
+  -webkit-transform: rotate(212.4deg);
+  -ms-transform: rotate(212.4deg);
+  transform: rotate(212.4deg);
+}
+.radial-progress[data-progress="59"] .display .percentage .numbers {
+  width: 3600px;
+}
+.radial-progress[data-progress="59"].lg .display .percentage .numbers {
+  width: 7200px;
+}
+.radial-progress[data-progress="59"].sm .display .percentage .numbers {
+  width: 2400px;
+}
+.radial-progress[data-progress="59"].xs .display .percentage .numbers {
+  width: 1440px;
+}
+.radial-progress[data-progress="60"] .slice:nth-child(1),
+.radial-progress[data-progress="60"] .fill {
+  -webkit-transform: rotate(108deg);
+  -ms-transform: rotate(108deg);
+  transform: rotate(108deg);
+}
+.radial-progress[data-progress="60"] .fill.fix {
+  -webkit-transform: rotate(216deg);
+  -ms-transform: rotate(216deg);
+  transform: rotate(216deg);
+}
+.radial-progress[data-progress="60"] .display .percentage .numbers {
+  width: 3660px;
+}
+.radial-progress[data-progress="60"].lg .display .percentage .numbers {
+  width: 7320px;
+}
+.radial-progress[data-progress="60"].sm .display .percentage .numbers {
+  width: 2440px;
+}
+.radial-progress[data-progress="60"].xs .display .percentage .numbers {
+  width: 1464px;
+}
+.radial-progress[data-progress="61"] .slice:nth-child(1),
+.radial-progress[data-progress="61"] .fill {
+  -webkit-transform: rotate(109.8deg);
+  -ms-transform: rotate(109.8deg);
+  transform: rotate(109.8deg);
+}
+.radial-progress[data-progress="61"] .fill.fix {
+  -webkit-transform: rotate(219.6deg);
+  -ms-transform: rotate(219.6deg);
+  transform: rotate(219.6deg);
+}
+.radial-progress[data-progress="61"] .display .percentage .numbers {
+  width: 3720px;
+}
+.radial-progress[data-progress="61"].lg .display .percentage .numbers {
+  width: 7440px;
+}
+.radial-progress[data-progress="61"].sm .display .percentage .numbers {
+  width: 2480px;
+}
+.radial-progress[data-progress="61"].xs .display .percentage .numbers {
+  width: 1488px;
+}
+.radial-progress[data-progress="62"] .slice:nth-child(1),
+.radial-progress[data-progress="62"] .fill {
+  -webkit-transform: rotate(111.6deg);
+  -ms-transform: rotate(111.6deg);
+  transform: rotate(111.6deg);
+}
+.radial-progress[data-progress="62"] .fill.fix {
+  -webkit-transform: rotate(223.2deg);
+  -ms-transform: rotate(223.2deg);
+  transform: rotate(223.2deg);
+}
+.radial-progress[data-progress="62"] .display .percentage .numbers {
+  width: 3780px;
+}
+.radial-progress[data-progress="62"].lg .display .percentage .numbers {
+  width: 7560px;
+}
+.radial-progress[data-progress="62"].sm .display .percentage .numbers {
+  width: 2520px;
+}
+.radial-progress[data-progress="62"].xs .display .percentage .numbers {
+  width: 1512px;
+}
+.radial-progress[data-progress="63"] .slice:nth-child(1),
+.radial-progress[data-progress="63"] .fill {
+  -webkit-transform: rotate(113.4deg);
+  -ms-transform: rotate(113.4deg);
+  transform: rotate(113.4deg);
+}
+.radial-progress[data-progress="63"] .fill.fix {
+  -webkit-transform: rotate(226.8deg);
+  -ms-transform: rotate(226.8deg);
+  transform: rotate(226.8deg);
+}
+.radial-progress[data-progress="63"] .display .percentage .numbers {
+  width: 3840px;
+}
+.radial-progress[data-progress="63"].lg .display .percentage .numbers {
+  width: 7680px;
+}
+.radial-progress[data-progress="63"].sm .display .percentage .numbers {
+  width: 2560px;
+}
+.radial-progress[data-progress="63"].xs .display .percentage .numbers {
+  width: 1536px;
+}
+.radial-progress[data-progress="64"] .slice:nth-child(1),
+.radial-progress[data-progress="64"] .fill {
+  -webkit-transform: rotate(115.2deg);
+  -ms-transform: rotate(115.2deg);
+  transform: rotate(115.2deg);
+}
+.radial-progress[data-progress="64"] .fill.fix {
+  -webkit-transform: rotate(230.4deg);
+  -ms-transform: rotate(230.4deg);
+  transform: rotate(230.4deg);
+}
+.radial-progress[data-progress="64"] .display .percentage .numbers {
+  width: 3900px;
+}
+.radial-progress[data-progress="64"].lg .display .percentage .numbers {
+  width: 7800px;
+}
+.radial-progress[data-progress="64"].sm .display .percentage .numbers {
+  width: 2600px;
+}
+.radial-progress[data-progress="64"].xs .display .percentage .numbers {
+  width: 1560px;
+}
+.radial-progress[data-progress="65"] .slice:nth-child(1),
+.radial-progress[data-progress="65"] .fill {
+  -webkit-transform: rotate(117deg);
+  -ms-transform: rotate(117deg);
+  transform: rotate(117deg);
+}
+.radial-progress[data-progress="65"] .fill.fix {
+  -webkit-transform: rotate(234deg);
+  -ms-transform: rotate(234deg);
+  transform: rotate(234deg);
+}
+.radial-progress[data-progress="65"] .display .percentage .numbers {
+  width: 3960px;
+}
+.radial-progress[data-progress="65"].lg .display .percentage .numbers {
+  width: 7920px;
+}
+.radial-progress[data-progress="65"].sm .display .percentage .numbers {
+  width: 2640px;
+}
+.radial-progress[data-progress="65"].xs .display .percentage .numbers {
+  width: 1584px;
+}
+.radial-progress[data-progress="66"] .slice:nth-child(1),
+.radial-progress[data-progress="66"] .fill {
+  -webkit-transform: rotate(118.8deg);
+  -ms-transform: rotate(118.8deg);
+  transform: rotate(118.8deg);
+}
+.radial-progress[data-progress="66"] .fill.fix {
+  -webkit-transform: rotate(237.6deg);
+  -ms-transform: rotate(237.6deg);
+  transform: rotate(237.6deg);
+}
+.radial-progress[data-progress="66"] .display .percentage .numbers {
+  width: 4020px;
+}
+.radial-progress[data-progress="66"].lg .display .percentage .numbers {
+  width: 8040px;
+}
+.radial-progress[data-progress="66"].sm .display .percentage .numbers {
+  width: 2680px;
+}
+.radial-progress[data-progress="66"].xs .display .percentage .numbers {
+  width: 1608px;
+}
+.radial-progress[data-progress="67"] .slice:nth-child(1),
+.radial-progress[data-progress="67"] .fill {
+  -webkit-transform: rotate(120.6deg);
+  -ms-transform: rotate(120.6deg);
+  transform: rotate(120.6deg);
+}
+.radial-progress[data-progress="67"] .fill.fix {
+  -webkit-transform: rotate(241.2deg);
+  -ms-transform: rotate(241.2deg);
+  transform: rotate(241.2deg);
+}
+.radial-progress[data-progress="67"] .display .percentage .numbers {
+  width: 4080px;
+}
+.radial-progress[data-progress="67"].lg .display .percentage .numbers {
+  width: 8160px;
+}
+.radial-progress[data-progress="67"].sm .display .percentage .numbers {
+  width: 2720px;
+}
+.radial-progress[data-progress="67"].xs .display .percentage .numbers {
+  width: 1632px;
+}
+.radial-progress[data-progress="68"] .slice:nth-child(1),
+.radial-progress[data-progress="68"] .fill {
+  -webkit-transform: rotate(122.4deg);
+  -ms-transform: rotate(122.4deg);
+  transform: rotate(122.4deg);
+}
+.radial-progress[data-progress="68"] .fill.fix {
+  -webkit-transform: rotate(244.8deg);
+  -ms-transform: rotate(244.8deg);
+  transform: rotate(244.8deg);
+}
+.radial-progress[data-progress="68"] .display .percentage .numbers {
+  width: 4140px;
+}
+.radial-progress[data-progress="68"].lg .display .percentage .numbers {
+  width: 8280px;
+}
+.radial-progress[data-progress="68"].sm .display .percentage .numbers {
+  width: 2760px;
+}
+.radial-progress[data-progress="68"].xs .display .percentage .numbers {
+  width: 1656px;
+}
+.radial-progress[data-progress="69"] .slice:nth-child(1),
+.radial-progress[data-progress="69"] .fill {
+  -webkit-transform: rotate(124.2deg);
+  -ms-transform: rotate(124.2deg);
+  transform: rotate(124.2deg);
+}
+.radial-progress[data-progress="69"] .fill.fix {
+  -webkit-transform: rotate(248.4deg);
+  -ms-transform: rotate(248.4deg);
+  transform: rotate(248.4deg);
+}
+.radial-progress[data-progress="69"] .display .percentage .numbers {
+  width: 4200px;
+}
+.radial-progress[data-progress="69"].lg .display .percentage .numbers {
+  width: 8400px;
+}
+.radial-progress[data-progress="69"].sm .display .percentage .numbers {
+  width: 2800px;
+}
+.radial-progress[data-progress="69"].xs .display .percentage .numbers {
+  width: 1680px;
+}
+.radial-progress[data-progress="70"] .slice:nth-child(1),
+.radial-progress[data-progress="70"] .fill {
+  -webkit-transform: rotate(126deg);
+  -ms-transform: rotate(126deg);
+  transform: rotate(126deg);
+}
+.radial-progress[data-progress="70"] .fill.fix {
+  -webkit-transform: rotate(252deg);
+  -ms-transform: rotate(252deg);
+  transform: rotate(252deg);
+}
+.radial-progress[data-progress="70"] .display .percentage .numbers {
+  width: 4260px;
+}
+.radial-progress[data-progress="70"].lg .display .percentage .numbers {
+  width: 8520px;
+}
+.radial-progress[data-progress="70"].sm .display .percentage .numbers {
+  width: 2840px;
+}
+.radial-progress[data-progress="70"].xs .display .percentage .numbers {
+  width: 1704px;
+}
+.radial-progress[data-progress="71"] .slice:nth-child(1),
+.radial-progress[data-progress="71"] .fill {
+  -webkit-transform: rotate(127.8deg);
+  -ms-transform: rotate(127.8deg);
+  transform: rotate(127.8deg);
+}
+.radial-progress[data-progress="71"] .fill.fix {
+  -webkit-transform: rotate(255.6deg);
+  -ms-transform: rotate(255.6deg);
+  transform: rotate(255.6deg);
+}
+.radial-progress[data-progress="71"] .display .percentage .numbers {
+  width: 4320px;
+}
+.radial-progress[data-progress="71"].lg .display .percentage .numbers {
+  width: 8640px;
+}
+.radial-progress[data-progress="71"].sm .display .percentage .numbers {
+  width: 2880px;
+}
+.radial-progress[data-progress="71"].xs .display .percentage .numbers {
+  width: 1728px;
+}
+.radial-progress[data-progress="72"] .slice:nth-child(1),
+.radial-progress[data-progress="72"] .fill {
+  -webkit-transform: rotate(129.6deg);
+  -ms-transform: rotate(129.6deg);
+  transform: rotate(129.6deg);
+}
+.radial-progress[data-progress="72"] .fill.fix {
+  -webkit-transform: rotate(259.2deg);
+  -ms-transform: rotate(259.2deg);
+  transform: rotate(259.2deg);
+}
+.radial-progress[data-progress="72"] .display .percentage .numbers {
+  width: 4380px;
+}
+.radial-progress[data-progress="72"].lg .display .percentage .numbers {
+  width: 8760px;
+}
+.radial-progress[data-progress="72"].sm .display .percentage .numbers {
+  width: 2920px;
+}
+.radial-progress[data-progress="72"].xs .display .percentage .numbers {
+  width: 1752px;
+}
+.radial-progress[data-progress="73"] .slice:nth-child(1),
+.radial-progress[data-progress="73"] .fill {
+  -webkit-transform: rotate(131.4deg);
+  -ms-transform: rotate(131.4deg);
+  transform: rotate(131.4deg);
+}
+.radial-progress[data-progress="73"] .fill.fix {
+  -webkit-transform: rotate(262.8deg);
+  -ms-transform: rotate(262.8deg);
+  transform: rotate(262.8deg);
+}
+.radial-progress[data-progress="73"] .display .percentage .numbers {
+  width: 4440px;
+}
+.radial-progress[data-progress="73"].lg .display .percentage .numbers {
+  width: 8880px;
+}
+.radial-progress[data-progress="73"].sm .display .percentage .numbers {
+  width: 2960px;
+}
+.radial-progress[data-progress="73"].xs .display .percentage .numbers {
+  width: 1776px;
+}
+.radial-progress[data-progress="74"] .slice:nth-child(1),
+.radial-progress[data-progress="74"] .fill {
+  -webkit-transform: rotate(133.2deg);
+  -ms-transform: rotate(133.2deg);
+  transform: rotate(133.2deg);
+}
+.radial-progress[data-progress="74"] .fill.fix {
+  -webkit-transform: rotate(266.4deg);
+  -ms-transform: rotate(266.4deg);
+  transform: rotate(266.4deg);
+}
+.radial-progress[data-progress="74"] .display .percentage .numbers {
+  width: 4500px;
+}
+.radial-progress[data-progress="74"].lg .display .percentage .numbers {
+  width: 9000px;
+}
+.radial-progress[data-progress="74"].sm .display .percentage .numbers {
+  width: 3000px;
+}
+.radial-progress[data-progress="74"].xs .display .percentage .numbers {
+  width: 1800px;
+}
+.radial-progress[data-progress="75"] .slice:nth-child(1),
+.radial-progress[data-progress="75"] .fill {
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.radial-progress[data-progress="75"] .fill.fix {
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.radial-progress[data-progress="75"] .display .percentage .numbers {
+  width: 4560px;
+}
+.radial-progress[data-progress="75"].lg .display .percentage .numbers {
+  width: 9120px;
+}
+.radial-progress[data-progress="75"].sm .display .percentage .numbers {
+  width: 3040px;
+}
+.radial-progress[data-progress="75"].xs .display .percentage .numbers {
+  width: 1824px;
+}
+.radial-progress[data-progress="76"] .slice:nth-child(1),
+.radial-progress[data-progress="76"] .fill {
+  -webkit-transform: rotate(136.8deg);
+  -ms-transform: rotate(136.8deg);
+  transform: rotate(136.8deg);
+}
+.radial-progress[data-progress="76"] .fill.fix {
+  -webkit-transform: rotate(273.6deg);
+  -ms-transform: rotate(273.6deg);
+  transform: rotate(273.6deg);
+}
+.radial-progress[data-progress="76"] .display .percentage .numbers {
+  width: 4620px;
+}
+.radial-progress[data-progress="76"].lg .display .percentage .numbers {
+  width: 9240px;
+}
+.radial-progress[data-progress="76"].sm .display .percentage .numbers {
+  width: 3080px;
+}
+.radial-progress[data-progress="76"].xs .display .percentage .numbers {
+  width: 1848px;
+}
+.radial-progress[data-progress="77"] .slice:nth-child(1),
+.radial-progress[data-progress="77"] .fill {
+  -webkit-transform: rotate(138.6deg);
+  -ms-transform: rotate(138.6deg);
+  transform: rotate(138.6deg);
+}
+.radial-progress[data-progress="77"] .fill.fix {
+  -webkit-transform: rotate(277.2deg);
+  -ms-transform: rotate(277.2deg);
+  transform: rotate(277.2deg);
+}
+.radial-progress[data-progress="77"] .display .percentage .numbers {
+  width: 4680px;
+}
+.radial-progress[data-progress="77"].lg .display .percentage .numbers {
+  width: 9360px;
+}
+.radial-progress[data-progress="77"].sm .display .percentage .numbers {
+  width: 3120px;
+}
+.radial-progress[data-progress="77"].xs .display .percentage .numbers {
+  width: 1872px;
+}
+.radial-progress[data-progress="78"] .slice:nth-child(1),
+.radial-progress[data-progress="78"] .fill {
+  -webkit-transform: rotate(140.4deg);
+  -ms-transform: rotate(140.4deg);
+  transform: rotate(140.4deg);
+}
+.radial-progress[data-progress="78"] .fill.fix {
+  -webkit-transform: rotate(280.8deg);
+  -ms-transform: rotate(280.8deg);
+  transform: rotate(280.8deg);
+}
+.radial-progress[data-progress="78"] .display .percentage .numbers {
+  width: 4740px;
+}
+.radial-progress[data-progress="78"].lg .display .percentage .numbers {
+  width: 9480px;
+}
+.radial-progress[data-progress="78"].sm .display .percentage .numbers {
+  width: 3160px;
+}
+.radial-progress[data-progress="78"].xs .display .percentage .numbers {
+  width: 1896px;
+}
+.radial-progress[data-progress="79"] .slice:nth-child(1),
+.radial-progress[data-progress="79"] .fill {
+  -webkit-transform: rotate(142.2deg);
+  -ms-transform: rotate(142.2deg);
+  transform: rotate(142.2deg);
+}
+.radial-progress[data-progress="79"] .fill.fix {
+  -webkit-transform: rotate(284.4deg);
+  -ms-transform: rotate(284.4deg);
+  transform: rotate(284.4deg);
+}
+.radial-progress[data-progress="79"] .display .percentage .numbers {
+  width: 4800px;
+}
+.radial-progress[data-progress="79"].lg .display .percentage .numbers {
+  width: 9600px;
+}
+.radial-progress[data-progress="79"].sm .display .percentage .numbers {
+  width: 3200px;
+}
+.radial-progress[data-progress="79"].xs .display .percentage .numbers {
+  width: 1920px;
+}
+.radial-progress[data-progress="80"] .slice:nth-child(1),
+.radial-progress[data-progress="80"] .fill {
+  -webkit-transform: rotate(144deg);
+  -ms-transform: rotate(144deg);
+  transform: rotate(144deg);
+}
+.radial-progress[data-progress="80"] .fill.fix {
+  -webkit-transform: rotate(288deg);
+  -ms-transform: rotate(288deg);
+  transform: rotate(288deg);
+}
+.radial-progress[data-progress="80"] .display .percentage .numbers {
+  width: 4860px;
+}
+.radial-progress[data-progress="80"].lg .display .percentage .numbers {
+  width: 9720px;
+}
+.radial-progress[data-progress="80"].sm .display .percentage .numbers {
+  width: 3240px;
+}
+.radial-progress[data-progress="80"].xs .display .percentage .numbers {
+  width: 1944px;
+}
+.radial-progress[data-progress="81"] .slice:nth-child(1),
+.radial-progress[data-progress="81"] .fill {
+  -webkit-transform: rotate(145.8deg);
+  -ms-transform: rotate(145.8deg);
+  transform: rotate(145.8deg);
+}
+.radial-progress[data-progress="81"] .fill.fix {
+  -webkit-transform: rotate(291.6deg);
+  -ms-transform: rotate(291.6deg);
+  transform: rotate(291.6deg);
+}
+.radial-progress[data-progress="81"] .display .percentage .numbers {
+  width: 4920px;
+}
+.radial-progress[data-progress="81"].lg .display .percentage .numbers {
+  width: 9840px;
+}
+.radial-progress[data-progress="81"].sm .display .percentage .numbers {
+  width: 3280px;
+}
+.radial-progress[data-progress="81"].xs .display .percentage .numbers {
+  width: 1968px;
+}
+.radial-progress[data-progress="82"] .slice:nth-child(1),
+.radial-progress[data-progress="82"] .fill {
+  -webkit-transform: rotate(147.6deg);
+  -ms-transform: rotate(147.6deg);
+  transform: rotate(147.6deg);
+}
+.radial-progress[data-progress="82"] .fill.fix {
+  -webkit-transform: rotate(295.2deg);
+  -ms-transform: rotate(295.2deg);
+  transform: rotate(295.2deg);
+}
+.radial-progress[data-progress="82"] .display .percentage .numbers {
+  width: 4980px;
+}
+.radial-progress[data-progress="82"].lg .display .percentage .numbers {
+  width: 9960px;
+}
+.radial-progress[data-progress="82"].sm .display .percentage .numbers {
+  width: 3320px;
+}
+.radial-progress[data-progress="82"].xs .display .percentage .numbers {
+  width: 1992px;
+}
+.radial-progress[data-progress="83"] .slice:nth-child(1),
+.radial-progress[data-progress="83"] .fill {
+  -webkit-transform: rotate(149.4deg);
+  -ms-transform: rotate(149.4deg);
+  transform: rotate(149.4deg);
+}
+.radial-progress[data-progress="83"] .fill.fix {
+  -webkit-transform: rotate(298.8deg);
+  -ms-transform: rotate(298.8deg);
+  transform: rotate(298.8deg);
+}
+.radial-progress[data-progress="83"] .display .percentage .numbers {
+  width: 5040px;
+}
+.radial-progress[data-progress="83"].lg .display .percentage .numbers {
+  width: 10080px;
+}
+.radial-progress[data-progress="83"].sm .display .percentage .numbers {
+  width: 3360px;
+}
+.radial-progress[data-progress="83"].xs .display .percentage .numbers {
+  width: 2016px;
+}
+.radial-progress[data-progress="84"] .slice:nth-child(1),
+.radial-progress[data-progress="84"] .fill {
+  -webkit-transform: rotate(151.2deg);
+  -ms-transform: rotate(151.2deg);
+  transform: rotate(151.2deg);
+}
+.radial-progress[data-progress="84"] .fill.fix {
+  -webkit-transform: rotate(302.4deg);
+  -ms-transform: rotate(302.4deg);
+  transform: rotate(302.4deg);
+}
+.radial-progress[data-progress="84"] .display .percentage .numbers {
+  width: 5100px;
+}
+.radial-progress[data-progress="84"].lg .display .percentage .numbers {
+  width: 10200px;
+}
+.radial-progress[data-progress="84"].sm .display .percentage .numbers {
+  width: 3400px;
+}
+.radial-progress[data-progress="84"].xs .display .percentage .numbers {
+  width: 2040px;
+}
+.radial-progress[data-progress="85"] .slice:nth-child(1),
+.radial-progress[data-progress="85"] .fill {
+  -webkit-transform: rotate(153deg);
+  -ms-transform: rotate(153deg);
+  transform: rotate(153deg);
+}
+.radial-progress[data-progress="85"] .fill.fix {
+  -webkit-transform: rotate(306deg);
+  -ms-transform: rotate(306deg);
+  transform: rotate(306deg);
+}
+.radial-progress[data-progress="85"] .display .percentage .numbers {
+  width: 5160px;
+}
+.radial-progress[data-progress="85"].lg .display .percentage .numbers {
+  width: 10320px;
+}
+.radial-progress[data-progress="85"].sm .display .percentage .numbers {
+  width: 3440px;
+}
+.radial-progress[data-progress="85"].xs .display .percentage .numbers {
+  width: 2064px;
+}
+.radial-progress[data-progress="86"] .slice:nth-child(1),
+.radial-progress[data-progress="86"] .fill {
+  -webkit-transform: rotate(154.8deg);
+  -ms-transform: rotate(154.8deg);
+  transform: rotate(154.8deg);
+}
+.radial-progress[data-progress="86"] .fill.fix {
+  -webkit-transform: rotate(309.6deg);
+  -ms-transform: rotate(309.6deg);
+  transform: rotate(309.6deg);
+}
+.radial-progress[data-progress="86"] .display .percentage .numbers {
+  width: 5220px;
+}
+.radial-progress[data-progress="86"].lg .display .percentage .numbers {
+  width: 10440px;
+}
+.radial-progress[data-progress="86"].sm .display .percentage .numbers {
+  width: 3480px;
+}
+.radial-progress[data-progress="86"].xs .display .percentage .numbers {
+  width: 2088px;
+}
+.radial-progress[data-progress="87"] .slice:nth-child(1),
+.radial-progress[data-progress="87"] .fill {
+  -webkit-transform: rotate(156.6deg);
+  -ms-transform: rotate(156.6deg);
+  transform: rotate(156.6deg);
+}
+.radial-progress[data-progress="87"] .fill.fix {
+  -webkit-transform: rotate(313.2deg);
+  -ms-transform: rotate(313.2deg);
+  transform: rotate(313.2deg);
+}
+.radial-progress[data-progress="87"] .display .percentage .numbers {
+  width: 5280px;
+}
+.radial-progress[data-progress="87"].lg .display .percentage .numbers {
+  width: 10560px;
+}
+.radial-progress[data-progress="87"].sm .display .percentage .numbers {
+  width: 3520px;
+}
+.radial-progress[data-progress="87"].xs .display .percentage .numbers {
+  width: 2112px;
+}
+.radial-progress[data-progress="88"] .slice:nth-child(1),
+.radial-progress[data-progress="88"] .fill {
+  -webkit-transform: rotate(158.4deg);
+  -ms-transform: rotate(158.4deg);
+  transform: rotate(158.4deg);
+}
+.radial-progress[data-progress="88"] .fill.fix {
+  -webkit-transform: rotate(316.8deg);
+  -ms-transform: rotate(316.8deg);
+  transform: rotate(316.8deg);
+}
+.radial-progress[data-progress="88"] .display .percentage .numbers {
+  width: 5340px;
+}
+.radial-progress[data-progress="88"].lg .display .percentage .numbers {
+  width: 10680px;
+}
+.radial-progress[data-progress="88"].sm .display .percentage .numbers {
+  width: 3560px;
+}
+.radial-progress[data-progress="88"].xs .display .percentage .numbers {
+  width: 2136px;
+}
+.radial-progress[data-progress="89"] .slice:nth-child(1),
+.radial-progress[data-progress="89"] .fill {
+  -webkit-transform: rotate(160.2deg);
+  -ms-transform: rotate(160.2deg);
+  transform: rotate(160.2deg);
+}
+.radial-progress[data-progress="89"] .fill.fix {
+  -webkit-transform: rotate(320.4deg);
+  -ms-transform: rotate(320.4deg);
+  transform: rotate(320.4deg);
+}
+.radial-progress[data-progress="89"] .display .percentage .numbers {
+  width: 5400px;
+}
+.radial-progress[data-progress="89"].lg .display .percentage .numbers {
+  width: 10800px;
+}
+.radial-progress[data-progress="89"].sm .display .percentage .numbers {
+  width: 3600px;
+}
+.radial-progress[data-progress="89"].xs .display .percentage .numbers {
+  width: 2160px;
+}
+.radial-progress[data-progress="90"] .slice:nth-child(1),
+.radial-progress[data-progress="90"] .fill {
+  -webkit-transform: rotate(162deg);
+  -ms-transform: rotate(162deg);
+  transform: rotate(162deg);
+}
+.radial-progress[data-progress="90"] .fill.fix {
+  -webkit-transform: rotate(324deg);
+  -ms-transform: rotate(324deg);
+  transform: rotate(324deg);
+}
+.radial-progress[data-progress="90"] .display .percentage .numbers {
+  width: 5460px;
+}
+.radial-progress[data-progress="90"].lg .display .percentage .numbers {
+  width: 10920px;
+}
+.radial-progress[data-progress="90"].sm .display .percentage .numbers {
+  width: 3640px;
+}
+.radial-progress[data-progress="90"].xs .display .percentage .numbers {
+  width: 2184px;
+}
+.radial-progress[data-progress="91"] .slice:nth-child(1),
+.radial-progress[data-progress="91"] .fill {
+  -webkit-transform: rotate(163.8deg);
+  -ms-transform: rotate(163.8deg);
+  transform: rotate(163.8deg);
+}
+.radial-progress[data-progress="91"] .fill.fix {
+  -webkit-transform: rotate(327.6deg);
+  -ms-transform: rotate(327.6deg);
+  transform: rotate(327.6deg);
+}
+.radial-progress[data-progress="91"] .display .percentage .numbers {
+  width: 5520px;
+}
+.radial-progress[data-progress="91"].lg .display .percentage .numbers {
+  width: 11040px;
+}
+.radial-progress[data-progress="91"].sm .display .percentage .numbers {
+  width: 3680px;
+}
+.radial-progress[data-progress="91"].xs .display .percentage .numbers {
+  width: 2208px;
+}
+.radial-progress[data-progress="92"] .slice:nth-child(1),
+.radial-progress[data-progress="92"] .fill {
+  -webkit-transform: rotate(165.6deg);
+  -ms-transform: rotate(165.6deg);
+  transform: rotate(165.6deg);
+}
+.radial-progress[data-progress="92"] .fill.fix {
+  -webkit-transform: rotate(331.2deg);
+  -ms-transform: rotate(331.2deg);
+  transform: rotate(331.2deg);
+}
+.radial-progress[data-progress="92"] .display .percentage .numbers {
+  width: 5580px;
+}
+.radial-progress[data-progress="92"].lg .display .percentage .numbers {
+  width: 11160px;
+}
+.radial-progress[data-progress="92"].sm .display .percentage .numbers {
+  width: 3720px;
+}
+.radial-progress[data-progress="92"].xs .display .percentage .numbers {
+  width: 2232px;
+}
+.radial-progress[data-progress="93"] .slice:nth-child(1),
+.radial-progress[data-progress="93"] .fill {
+  -webkit-transform: rotate(167.4deg);
+  -ms-transform: rotate(167.4deg);
+  transform: rotate(167.4deg);
+}
+.radial-progress[data-progress="93"] .fill.fix {
+  -webkit-transform: rotate(334.8deg);
+  -ms-transform: rotate(334.8deg);
+  transform: rotate(334.8deg);
+}
+.radial-progress[data-progress="93"] .display .percentage .numbers {
+  width: 5640px;
+}
+.radial-progress[data-progress="93"].lg .display .percentage .numbers {
+  width: 11280px;
+}
+.radial-progress[data-progress="93"].sm .display .percentage .numbers {
+  width: 3760px;
+}
+.radial-progress[data-progress="93"].xs .display .percentage .numbers {
+  width: 2256px;
+}
+.radial-progress[data-progress="94"] .slice:nth-child(1),
+.radial-progress[data-progress="94"] .fill {
+  -webkit-transform: rotate(169.2deg);
+  -ms-transform: rotate(169.2deg);
+  transform: rotate(169.2deg);
+}
+.radial-progress[data-progress="94"] .fill.fix {
+  -webkit-transform: rotate(338.4deg);
+  -ms-transform: rotate(338.4deg);
+  transform: rotate(338.4deg);
+}
+.radial-progress[data-progress="94"] .display .percentage .numbers {
+  width: 5700px;
+}
+.radial-progress[data-progress="94"].lg .display .percentage .numbers {
+  width: 11400px;
+}
+.radial-progress[data-progress="94"].sm .display .percentage .numbers {
+  width: 3800px;
+}
+.radial-progress[data-progress="94"].xs .display .percentage .numbers {
+  width: 2280px;
+}
+.radial-progress[data-progress="95"] .slice:nth-child(1),
+.radial-progress[data-progress="95"] .fill {
+  -webkit-transform: rotate(171deg);
+  -ms-transform: rotate(171deg);
+  transform: rotate(171deg);
+}
+.radial-progress[data-progress="95"] .fill.fix {
+  -webkit-transform: rotate(342deg);
+  -ms-transform: rotate(342deg);
+  transform: rotate(342deg);
+}
+.radial-progress[data-progress="95"] .display .percentage .numbers {
+  width: 5760px;
+}
+.radial-progress[data-progress="95"].lg .display .percentage .numbers {
+  width: 11520px;
+}
+.radial-progress[data-progress="95"].sm .display .percentage .numbers {
+  width: 3840px;
+}
+.radial-progress[data-progress="95"].xs .display .percentage .numbers {
+  width: 2304px;
+}
+.radial-progress[data-progress="96"] .slice:nth-child(1),
+.radial-progress[data-progress="96"] .fill {
+  -webkit-transform: rotate(172.8deg);
+  -ms-transform: rotate(172.8deg);
+  transform: rotate(172.8deg);
+}
+.radial-progress[data-progress="96"] .fill.fix {
+  -webkit-transform: rotate(345.6deg);
+  -ms-transform: rotate(345.6deg);
+  transform: rotate(345.6deg);
+}
+.radial-progress[data-progress="96"] .display .percentage .numbers {
+  width: 5820px;
+}
+.radial-progress[data-progress="96"].lg .display .percentage .numbers {
+  width: 11640px;
+}
+.radial-progress[data-progress="96"].sm .display .percentage .numbers {
+  width: 3880px;
+}
+.radial-progress[data-progress="96"].xs .display .percentage .numbers {
+  width: 2328px;
+}
+.radial-progress[data-progress="97"] .slice:nth-child(1),
+.radial-progress[data-progress="97"] .fill {
+  -webkit-transform: rotate(174.6deg);
+  -ms-transform: rotate(174.6deg);
+  transform: rotate(174.6deg);
+}
+.radial-progress[data-progress="97"] .fill.fix {
+  -webkit-transform: rotate(349.2deg);
+  -ms-transform: rotate(349.2deg);
+  transform: rotate(349.2deg);
+}
+.radial-progress[data-progress="97"] .display .percentage .numbers {
+  width: 5880px;
+}
+.radial-progress[data-progress="97"].lg .display .percentage .numbers {
+  width: 11760px;
+}
+.radial-progress[data-progress="97"].sm .display .percentage .numbers {
+  width: 3920px;
+}
+.radial-progress[data-progress="97"].xs .display .percentage .numbers {
+  width: 2352px;
+}
+.radial-progress[data-progress="98"] .slice:nth-child(1),
+.radial-progress[data-progress="98"] .fill {
+  -webkit-transform: rotate(176.4deg);
+  -ms-transform: rotate(176.4deg);
+  transform: rotate(176.4deg);
+}
+.radial-progress[data-progress="98"] .fill.fix {
+  -webkit-transform: rotate(352.8deg);
+  -ms-transform: rotate(352.8deg);
+  transform: rotate(352.8deg);
+}
+.radial-progress[data-progress="98"] .display .percentage .numbers {
+  width: 5940px;
+}
+.radial-progress[data-progress="98"].lg .display .percentage .numbers {
+  width: 11880px;
+}
+.radial-progress[data-progress="98"].sm .display .percentage .numbers {
+  width: 3960px;
+}
+.radial-progress[data-progress="98"].xs .display .percentage .numbers {
+  width: 2376px;
+}
+.radial-progress[data-progress="99"] .slice:nth-child(1),
+.radial-progress[data-progress="99"] .fill {
+  -webkit-transform: rotate(178.2deg);
+  -ms-transform: rotate(178.2deg);
+  transform: rotate(178.2deg);
+}
+.radial-progress[data-progress="99"] .fill.fix {
+  -webkit-transform: rotate(356.4deg);
+  -ms-transform: rotate(356.4deg);
+  transform: rotate(356.4deg);
+}
+.radial-progress[data-progress="99"] .display .percentage .numbers {
+  width: 6000px;
+}
+.radial-progress[data-progress="99"].lg .display .percentage .numbers {
+  width: 12000px;
+}
+.radial-progress[data-progress="99"].sm .display .percentage .numbers {
+  width: 4000px;
+}
+.radial-progress[data-progress="99"].xs .display .percentage .numbers {
+  width: 2400px;
+}
+.radial-progress[data-progress="100"] .slice:nth-child(1),
+.radial-progress[data-progress="100"] .fill {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.radial-progress[data-progress="100"] .fill.fix {
+  -webkit-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.radial-progress[data-progress="100"] .display .percentage .numbers {
+  width: 6060px;
+}
+.radial-progress[data-progress="100"].lg .display .percentage .numbers {
+  width: 12120px;
+}
+.radial-progress[data-progress="100"].sm .display .percentage .numbers {
+  width: 4040px;
+}
+.radial-progress[data-progress="100"].xs .display .percentage .numbers {
+  width: 2424px;
+}
+.radial-progress.inset {
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2) inset;
+}
+.radial-progress.inset .display {
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2);
+}
+.radial-progress.pie .display {
+  background-color: transparent;
+}
+.radial-progress.pie .display .percentage {
+  text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black;
+  color: #FFFFFF;
+}
+.radial-progress.lg {
+  height: 240px;
+  width: 240px;
+}
+.radial-progress.lg.inset {
+  box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.2) inset;
+}
+.radial-progress.lg.inset .display {
+  box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.2);
+}
+.radial-progress.lg .slice {
+  clip: rect(0px, 240px, 240px, 120px);
+}
+.radial-progress.lg .slice,
+.radial-progress.lg .slice .fill {
+  width: 240px;
+  height: 240px;
+}
+.radial-progress.lg .slice .fill {
+  clip: rect(0px, 120px, 240px, 0px);
+}
+.radial-progress.lg .display {
+  width: 180px;
+  height: 180px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.radial-progress.lg .display .percentage {
+  height: 48px;
+  width: 120px;
+  top: 66px;
+  left: 30px;
+  line-height: 1;
+}
+.radial-progress.lg .display .percentage .numbers {
+  margin-top: -48px;
+  font-size: 48px;
+}
+.radial-progress.lg .display .percentage .numbers span {
+  width: 120px;
+}
+.radial-progress.sm {
+  height: 60px;
+  width: 60px;
+}
+.radial-progress.sm.inset {
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2) inset;
+}
+.radial-progress.sm.inset .display {
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+.radial-progress.sm .slice {
+  clip: rect(0px, 60px, 60px, 30px);
+}
+.radial-progress.sm .slice,
+.radial-progress.sm .slice .fill {
+  width: 60px;
+  height: 60px;
+}
+.radial-progress.sm .slice .fill {
+  clip: rect(0px, 30px, 60px, 0px);
+}
+.radial-progress.sm .display {
+  width: 50px;
+  height: 50px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+.radial-progress.sm .display .percentage {
+  height: 16px;
+  width: 40px;
+  top: 17px;
+  left: 5px;
+  line-height: 1;
+}
+.radial-progress.sm .display .percentage .numbers {
+  margin-top: -16px;
+  font-size: 16px;
+}
+.radial-progress.sm .display .percentage .numbers span {
+  width: 40px;
+}
+.radial-progress.xs {
+  height: 30px;
+  width: 30px;
+}
+.radial-progress.xs.inset {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
+}
+.radial-progress.xs.inset .display {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.radial-progress.xs .slice {
+  clip: rect(0px, 30px, 30px, 15px);
+}
+.radial-progress.xs .slice,
+.radial-progress.xs .slice .fill {
+  width: 30px;
+  height: 30px;
+}
+.radial-progress.xs .slice .fill {
+  clip: rect(0px, 15px, 30px, 0px);
+}
+.radial-progress.xs .display {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  margin-top: 3px;
+}
+.radial-progress.xs .display .percentage {
+  height: 10px;
+  width: 24px;
+  top: 6px;
+  left: 0px;
+  line-height: 1;
+}
+.radial-progress.xs .display .percentage .numbers {
+  margin-top: -10px;
+  font-size: 10px;
+  font-weight: 900;
+}
+.radial-progress.xs .display .percentage .numbers span {
+  width: 24px;
+}
